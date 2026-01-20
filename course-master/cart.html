@@ -11,6 +11,7 @@
     <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="styles/main_responsive.css">
+    <link rel="stylesheet" type="text/css" href="styles/google_sheets.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <style>
@@ -44,17 +45,12 @@
             color: #1c1d1f !important;
         }
 
-        /* Header Side - Yellow Theme */
         .header_side {
             background: #ffb606 !important;
         }
 
         .header_side span {
             color: #ffffff !important;
-        }
-
-        .header_side img {
-            filter: none;
         }
 
         .cart_nav_item {
@@ -219,6 +215,74 @@
                 margin-top: 30px;
             }
         }
+
+        /* Checkout Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #6a6f73;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1c1d1f;
+        }
+
+        .checkout-form input,
+        .checkout-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #d1d7dc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .checkout-form button {
+            width: 100%;
+            padding: 14px;
+            background: #a435f0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .checkout-form button:hover {
+            background: #8710d8;
+        }
     </style>
 </head>
 
@@ -302,8 +366,32 @@
 
     </div>
 
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-title">Thông tin thanh toán</div>
+            <form id="checkout-form" class="checkout-form">
+                <input type="text" id="order_name" placeholder="Họ và tên" required>
+                <input type="email" id="order_email" placeholder="Email" required>
+                <input type="tel" id="order_phone" placeholder="Số điện thoại" required>
+                <textarea id="order_address" placeholder="Địa chỉ nhận học liệu (nếu có) hoặc ghi chú"
+                    rows="3"></textarea>
+                <button type="submit" id="confirm_order_btn">Xác nhận đặt hàng</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Custom Toast HTML -->
+    <div id="toast-overlay" class="toast-overlay"></div>
+    <div id="toast" class="custom-toast">
+        <i id="toast-icon" class="fas"></i>
+        <span id="toast-message"></span>
+    </div>
+
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/cart.js"></script>
+    <script src="js/google_sheets.js"></script>
     <script>
         function renderCart() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -323,12 +411,9 @@
             container.innerHTML = '';
 
             let total = 0;
-
             cart.forEach((item, index) => {
                 const cartItem = document.createElement('div');
                 cartItem.className = 'cart_item';
-
-                // Extract numeric price for calculation
                 const priceNum = parseInt(item.price.replace(/\D/g, '')) || 0;
                 total += priceNum;
 
@@ -352,19 +437,61 @@
             cart.splice(index, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
             renderCart();
-            if (typeof updateCartCount === 'function') {
-                updateCartCount();
-            }
+            if (typeof updateCartCount === 'function') updateCartCount();
         }
 
         function checkout() {
-            alert('Cảm ơn bạn đã mua hàng! Chức năng thanh toán đang được phát triển.');
-            localStorage.removeItem('cart');
-            renderCart();
-            if (typeof updateCartCount === 'function') {
-                updateCartCount();
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                showToast('Giỏ hàng của bạn đang trống!', 'error');
+                return;
             }
+            document.getElementById('checkoutModal').style.display = 'block';
         }
+
+        function closeModal() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById('checkoutModal');
+            if (event.target == modal) closeModal();
+        }
+
+        document.getElementById('checkout-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const confirmBtn = document.getElementById('confirm_order_btn');
+            confirmBtn.disabled = true;
+            confirmBtn.innerText = 'Đang xử lý...';
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const courses = cart.map(item => item.title).join(', ');
+            const total = document.getElementById('total_price').innerText;
+
+            const formData = new FormData();
+            formData.append('type', 'order');
+            formData.append('name', document.getElementById('order_name').value);
+            formData.append('email', document.getElementById('order_email').value);
+            formData.append('phone', document.getElementById('order_phone').value);
+            formData.append('address', document.getElementById('order_address').value);
+            formData.append('courses', courses);
+            formData.append('total', total);
+
+            fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+                .then(() => {
+                    showToast('Đặt hàng thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.');
+                    localStorage.removeItem('cart');
+                    renderCart();
+                    closeModal();
+                    if (typeof updateCartCount === 'function') updateCartCount();
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    showToast('Có lỗi xảy ra, vui lòng thử lại sau.', 'error');
+                    confirmBtn.disabled = false;
+                    confirmBtn.innerText = 'Xác nhận đặt hàng';
+                });
+        });
 
         $(document).ready(function () {
             renderCart();
