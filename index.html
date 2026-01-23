@@ -141,11 +141,14 @@
 				<nav class="main_nav_container">
 					<div class="main_nav">
 						<ul class="main_nav_list">
-							<li class="main_nav_item"><a href="#">Trang chủ</a></li>
+							<li class="main_nav_item"><a href="index.html">Trang chủ</a></li>
 							<li class="main_nav_item"><a href="courses.html">Khóa học</a></li>
 							<li class="main_nav_item"><a href="elements.html">Thành phần</a></li>
 							<li class="main_nav_item"><a href="news.html">Tin tức</a></li>
 							<li class="main_nav_item"><a href="contact.html">Liên hệ</a></li>
+							<li class="main_nav_item login_btn_container">
+								<button id="login_btn" class="login_btn">Đăng nhập</button>
+							</li>
 							<li class="main_nav_item cart_nav_item">
 								<div class="cart_icon_container" onclick="window.location.href='cart.html'">
 									<i class="fas fa-shopping-cart"></i>
@@ -180,7 +183,7 @@
 			<div class="menu_inner menu_mm">
 				<div class="menu menu_mm">
 					<ul class="menu_list menu_mm">
-						<li class="menu_item menu_mm"><a href="#">Trang chủ</a></li>
+						<li class="menu_item menu_mm"><a href="index.html">Trang chủ</a></li>
 						<li class="menu_item menu_mm"><a href="#">Giới thiệu</a></li>
 						<li class="menu_item menu_mm"><a href="courses.html">Khóa học</a></li>
 						<li class="menu_item menu_mm"><a href="elements.html">Thành phần</a></li>
@@ -409,526 +412,584 @@
 
 						<div class="register_section d-flex flex-column align-items-center justify-content-center">
 							<div class="register_content text-center">
-								<div class="col-lg-6 nopadding">
+								<h1 class="register_title">Đăng ký ngay giảm giá <span>50%</span> cho đến
+									10/02/2026</h1>
+								<p class="register_text">Khóa học được thiết kế with lộ trình rõ ràng, giúp học viên nắm
+									vững kiến thức từ cơ bản đến nâng cao. Phương pháp giảng dạy dễ hiểu, thực tế, giúp
+									bạn cải thiện kỹ năng nhanh chóng và áp dụng hiệu quả vào kỳ thi IELTS.</p>
+								<div class="button button_1 register_button mx-auto trans_200"><a href="#">Đăng ký
+										ngay</a></div>
+							</div>
+						</div>
 
-									<!-- Search -->
+					</div>
 
+					<div class="col-lg-6 nopadding">
+
+						<!-- Search -->
+
+						<div class="search_section d-flex flex-column align-items-center justify-content-center">
+							<div class="search_background" style="background-image:url(images/search_background.jpg);">
+							</div>
+							<div class="search_content text-center">
+								<h1 class="search_title">Tìm kiếm khóa học</h1>
+								<form id="search_form" class="search_form" action="post">
+									<input id="search_form_name" class="input_field search_form_name" type="text"
+										placeholder="Tên khóa học" required="required"
+										data-error="Tên khóa học is required.">
+									<input id="search_form_category" class="input_field search_form_category"
+										type="text" placeholder="Danh mục">
+									<input id="search_form_degree" class="input_field search_form_degree" type="text"
+										placeholder="Chứng chỉ">
+									<button id="search_submit_button" type="submit"
+										class="search_submit_button trans_200" value="Submit">Tìm kiếm</button>
+								</form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Services -->
+
+		<div class="services page_section">
+
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="section_title text-center">
+							<h1>Dịch vụ</h1>
+						</div>
+					</div>
+				</div>
+
+				<div class="row services_row">
+
+					<div
+						class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+						<div class="icon_container d-flex flex-column justify-content-end">
+							<img src="images/earth-globe.svg" alt="">
+						</div>
+						<h3>Khóa học trực tuyến</h3>
+						<p>Khóa học trực tuyến được thiết kế with lộ trình rõ ràng, giúp học viên học mọi lúc, mọi nơi.
+							Nội dung bám sát thực tế, phương pháp dễ hiểu, tập trung vào kỹ năng làm bài và cải thiện
+							điểm số hiệu quả.</p>
+					</div>
+
+					<div
+						class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+						<div class="icon_container d-flex flex-column justify-content-end">
+							<img src="images/exam.svg" alt="">
+						</div>
+						<h3>Khóa học trực tiếp tại trung tâm</h3>
+						<p>Khóa học trực tiếp tại trung tâm with môi trường học tập tập trung, tương tác cao giữa giảng
+							viên và học viên. Lộ trình rõ ràng, hướng dẫn chi tiết, giúp học viên tiến bộ nhanh và đạt
+							mục tiêu học tập.</p>
+					</div>
+
+					<div
+						class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+						<div class="icon_container d-flex flex-column justify-content-end">
+							<img src="images/books.svg" alt="">
+						</div>
+						<h3>Thư viện học tập</h3>
+						<p>Thư viện học tập đa dạng with tài liệu được chọn lọc kỹ lưỡng, hỗ trợ học viên ôn luyện và
+							nâng cao kiến thức hiệu quả. Nội dung luôn được cập nhật, giúp việc học trở nên dễ dàng và
+							chủ động hơn.</p>
+					</div>
+
+					<div
+						class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+						<div class="icon_container d-flex flex-column justify-content-end">
+							<img src="images/professor.svg" alt="">
+						</div>
+						<h3>Giảng viên chuyên nghiệp</h3>
+						<p>Giảng viên chuyên nghiệp with kinh nghiệm giảng dạy dày dặn, phương pháp giảng dạy hiệu quả,
+							giúp
+							học viên nắm vững kiến thức và cải thiện kỹ năng nhanh chóng.</p>
+					</div>
+
+					<div
+						class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+						<div class="icon_container d-flex flex-column justify-content-end">
+							<img src="images/blackboard.svg" alt="">
+						</div>
+						<h3>Chương trình học</h3>
+						<p>Chương trình học đa dạng with các khóa học chuyên sâu, giúp học viên nắm vững kiến thức và
+							cải
+							viết hiệu quả.</p>
+					</div>
+
+					<div
+						class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+						<div class="icon_container d-flex flex-column justify-content-end">
+							<img src="images/mortarboard.svg" alt="">
+						</div>
+						<h3>Chương trình Văn bằng Sau đại học</h3>
+						<p>Chương trình Văn bằng Sau đại học with lộ trình rõ ràng, hướng dẫn chi tiết, giúp học viên
+							tiến
+							bộ nhanh và đạt mục tiêu học tập.</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- Testimonials -->
+
+		<div class="testimonials page_section">
+			<!-- <div class="testimonials_background" style="background-image:url(images/testimonials_background.jpg)"></div> -->
+			<div class="testimonials_background_container prlx_parent">
+				<div class="testimonials_background prlx"
+					style="background-image:url(images/testimonials_background.jpg)"></div>
+			</div>
+			<div class="container">
+
+				<div class="row">
+					<div class="col">
+						<div class="section_title text-center">
+							<h1>Đánh giá từ học viên</h1>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-10 offset-lg-1">
+
+						<div class="testimonials_slider_container">
+
+							<!-- Testimonials Slider -->
+							<div class="owl-carousel owl-theme testimonials_slider">
+
+								<!-- Testimonials Item -->
+								<div class="owl-item">
+									<div class="testimonials_item text-center">
+										<div class="quote">“</div>
+										<p class="testimonials_text">Khóa học mang lại trải nghiệm học tập hiệu quả with
+											lộ trình rõ ràng và phương pháp dễ hiểu. Giảng viên hỗ trợ tận tình, giúp
+											mình tự tin hơn và cải thiện rõ rệt các kỹ năng sau thời gian học.</p>
+										<div class="testimonial_user">
+											<div class="testimonial_image mx-auto">
+												<img src="images/testimonials_user.jpg" alt="">
+											</div>
+											<div class="testimonial_name">RICK</div>
+											<div class="testimonial_title">Sinh viên Đại Học</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Testimonials Item -->
+								<div class="owl-item">
+									<div class="testimonials_item text-center">
+										<div class="quote">“</div>
+										<p class="testimonials_text">Khóa học mang lại trải nghiệm học tập hiệu quả with
+											lộ trình rõ ràng và phương pháp dễ hiểu. Giảng viên hỗ trợ tận tình, giúp
+											mình tự tin hơn và cải thiện rõ rệt các kỹ năng sau thời gian học.</p>
+										<div class="testimonial_user">
+											<div class="testimonial_image mx-auto">
+												<img src="images/testimonials_user.jpg" alt="">
+											</div>
+											<div class="testimonial_name">RICK</div>
+											<div class="testimonial_title">Sinh viên Đại Học</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Testimonials Item -->
+								<div class="owl-item">
+									<div class="testimonials_item text-center">
+										<div class="quote">“</div>
+										<p class="testimonials_text">Khóa học mang lại trải nghiệm học tập hiệu quả with
+											lộ trình rõ ràng và phương pháp dễ hiểu. Giảng viên hỗ trợ tận tình, giúp
+											mình tự tin hơn và cải thiện rõ rệt các kỹ năng sau thời gian học.</p>
+										<div class="testimonial_user">
+											<div class="testimonial_image mx-auto">
+												<img src="images/testimonials_user.jpg" alt="">
+											</div>
+											<div class="testimonial_name">RICK</div>
+											<div class="testimonial_title">Sinh viên Đại Học</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Events -->
+
+		<div class="events page_section">
+			<div class="container">
+
+				<div class="row">
+					<div class="col">
+						<div class="section_title text-center">
+							<h1>Sự kiện sắp tớis</h1>
+						</div>
+					</div>
+				</div>
+
+				<div class="event_items">
+
+					<!-- Event Item -->
+					<div class="row event_item">
+						<div class="col">
+							<div class="row d-flex flex-row align-items-end">
+
+								<div class="col-lg-2 order-lg-1 order-2">
 									<div
-										class="search_section d-flex flex-column align-items-center justify-content-center">
-										<div class="search_background"
-											style="background-image:url(images/search_background.jpg);">
-										</div>
-										<div class="search_content text-center">
-											<h1 class="search_title">Tìm kiếm khóa học</h1>
-											<form id="search_form" class="search_form" action="post">
-												<input id="search_form_name" class="input_field search_form_name"
-													type="text" placeholder="Tên khóa học" required="required"
-													data-error="Tên khóa học is required.">
-												<input id="search_form_category"
-													class="input_field search_form_category" type="text"
-													placeholder="Danh mục">
-												<input id="search_form_degree" class="input_field search_form_degree"
-													type="text" placeholder="Chứng chỉ">
-												<button id="search_submit_button" type="submit"
-													class="search_submit_button trans_200" value="Submit">Tìm
-													kiếm</button>
-											</form>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Services -->
-
-					<div class="services page_section">
-
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="section_title text-center">
-										<h1>Dịch vụ</h1>
+										class="event_date d-flex flex-column align-items-center justify-content-center">
+										<div class="event_day">10</div>
+										<div class="event_month">Tháng 1</div>
 									</div>
 								</div>
-							</div>
 
-							<div class="row services_row">
-
-								<div
-									class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-									<div class="icon_container d-flex flex-column justify-content-end">
-										<img src="images/earth-globe.svg" alt="">
+								<div class="col-lg-6 order-lg-2 order-3">
+									<div class="event_content">
+										<div class="event_name"><a class="trans_200" href="#">Lễ hội Sinh viên</a></div>
+										<div class="event_location">Hutech University</div>
+										<p>Lễ hội Sinh viên là sự kiện lớn nhất của Đại học, with nhiều hoạt động thú vị
+											và
+											như thi đấu thể thao, các buổi biểu diễn nghệ thuật, và các hoạt động văn
+											hóa.</p>
 									</div>
-									<h3>Khóa học trực tuyến</h3>
-									<p>Khóa học trực tuyến được thiết kế với lộ trình rõ ràng, giúp học viên học mọi
-										lúc, mọi nơi.
-										Nội dung bám sát thực tế, phương pháp dễ hiểu, tập trung vào kỹ năng làm bài và
-										cải thiện
-										điểm số hiệu quả.</p>
 								</div>
 
-								<div
-									class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-									<div class="icon_container d-flex flex-column justify-content-end">
-										<img src="images/exam.svg" alt="">
+								<div class="col-lg-4 order-lg-3 order-1">
+									<div class="event_image">
+										<img src="images/event_1.jpg" alt="https://unsplash.com/@theunsteady5">
 									</div>
-									<h3>Khóa học trực tiếp tại trung tâm</h3>
-									<p>Khóa học trực tiếp tại trung tâm với môi trường học tập tập trung, tương tác cao
-										giữa giảng
-										viên và học viên. Lộ trình rõ ràng, hướng dẫn chi tiết, giúp học viên tiến bộ
-										nhanh và đạt
-										mục tiêu học tập.</p>
-								</div>
-
-								<div
-									class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-									<div class="icon_container d-flex flex-column justify-content-end">
-										<img src="images/books.svg" alt="">
-									</div>
-									<h3>Thư viện học tập</h3>
-									<p>Thư viện học tập đa dạng với tài liệu được chọn lọc kỹ lưỡng, hỗ trợ học viên ôn
-										luyện và
-										nâng cao kiến thức hiệu quả. Nội dung luôn được cập nhật, giúp việc học trở nên
-										dễ dàng và
-										chủ động hơn.</p>
-								</div>
-
-								<div
-									class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-									<div class="icon_container d-flex flex-column justify-content-end">
-										<img src="images/professor.svg" alt="">
-									</div>
-									<h3>Giảng viên chuyên nghiệp</h3>
-									<p>Giảng viên chuyên nghiệp với kinh nghiệm giảng dạy dày dặn, phương pháp giảng dạy
-										hiệu quả,
-										giúp
-										học viên nắm vững kiến thức và cải thiện kỹ năng nhanh chóng.</p>
-								</div>
-
-								<div
-									class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-									<div class="icon_container d-flex flex-column justify-content-end">
-										<img src="images/blackboard.svg" alt="">
-									</div>
-									<h3>Chương trình học</h3>
-									<p>Chương trình học đa dạng với các khóa học chuyên sâu, giúp học viên nắm vững kiến
-										thức và cải
-										viết hiệu quả.</p>
-								</div>
-
-								<div
-									class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-									<div class="icon_container d-flex flex-column justify-content-end">
-										<img src="images/mortarboard.svg" alt="">
-									</div>
-									<h3>Chương trình Văn bằng Sau đại học</h3>
-									<p>Chương trình Văn bằng Sau đại học với lộ trình rõ ràng, hướng dẫn chi tiết, giúp
-										học viên
-										tiến
-										bộ nhanh và đạt mục tiêu học tập.</p>
 								</div>
 
 							</div>
 						</div>
 					</div>
 
-					<!-- Testimonials -->
+					<!-- Event Item -->
+					<div class="row event_item">
+						<div class="col">
+							<div class="row d-flex flex-row align-items-end">
 
-					<div class="testimonials page_section">
-						<!-- <div class="testimonials_background" style="background-image:url(images/testimonials_background.jpg)"></div> -->
-						<div class="testimonials_background_container prlx_parent">
-							<div class="testimonials_background prlx"
-								style="background-image:url(images/testimonials_background.jpg)"></div>
-						</div>
-						<div class="container">
-
-							<div class="row">
-								<div class="col">
-									<div class="section_title text-center">
-										<h1>Đánh giá từ học viên</h1>
+								<div class="col-lg-2 order-lg-1 order-2">
+									<div
+										class="event_date d-flex flex-column align-items-center justify-content-center">
+										<div class="event_day">20</div>
+										<div class="event_month">Tháng 1</div>
 									</div>
 								</div>
-							</div>
 
-							<div class="row">
-								<div class="col-lg-10 offset-lg-1">
-
-									<div class="testimonials_slider_container">
-
-										<!-- Testimonials Slider -->
-										<div class="owl-carousel owl-theme testimonials_slider">
-
-											<!-- Testimonials Item -->
-											<div class="owl-item">
-												<div class="testimonials_item text-center">
-													<div class="quote">“</div>
-													<p class="testimonials_text">Khóa học mang lại trải nghiệm học tập
-														hiệu quả với
-														lộ trình rõ ràng và phương pháp dễ hiểu. Giảng viên hỗ trợ tận
-														tình, giúp
-														mình tự tin hơn và cải thiện rõ rệt các kỹ năng sau thời gian
-														học.</p>
-													<div class="testimonial_user">
-														<div class="testimonial_image mx-auto">
-															<img src="images/testimonials_user.jpg" alt="">
-														</div>
-														<div class="testimonial_name">RICK</div>
-														<div class="testimonial_title">Sinh viên Đại Học</div>
-													</div>
-												</div>
-											</div>
-
-											<!-- Testimonials Item -->
-											<div class="owl-item">
-												<div class="testimonials_item text-center">
-													<div class="quote">“</div>
-													<p class="testimonials_text">Khóa học mang lại trải nghiệm học tập
-														hiệu quả với
-														lộ trình rõ ràng và phương pháp dễ hiểu. Giảng viên hỗ trợ tận
-														tình, giúp
-														mình tự tin hơn và cải thiện rõ rệt các kỹ năng sau thời gian
-														học.</p>
-													<div class="testimonial_user">
-														<div class="testimonial_image mx-auto">
-															<img src="images/testimonials_user.jpg" alt="">
-														</div>
-														<div class="testimonial_name">RICK</div>
-														<div class="testimonial_title">Sinh viên Đại Học</div>
-													</div>
-												</div>
-											</div>
-
-											<!-- Testimonials Item -->
-											<div class="owl-item">
-												<div class="testimonials_item text-center">
-													<div class="quote">“</div>
-													<p class="testimonials_text">Khóa học mang lại trải nghiệm học tập
-														hiệu quả với
-														lộ trình rõ ràng và phương pháp dễ hiểu. Giảng viên hỗ trợ tận
-														tình, giúp
-														mình tự tin hơn và cải thiện rõ rệt các kỹ năng sau thời gian
-														học.</p>
-													<div class="testimonial_user">
-														<div class="testimonial_image mx-auto">
-															<img src="images/testimonials_user.jpg" alt="">
-														</div>
-														<div class="testimonial_name">RICK</div>
-														<div class="testimonial_title">Sinh viên Đại Học</div>
-													</div>
-												</div>
-											</div>
-
-										</div>
-
+								<div class="col-lg-6 order-lg-2 order-3">
+									<div class="event_content">
+										<div class="event_name"><a class="trans_200" href="#">Ngày hội Open Day tại
+												khuôn viên trường Đại học</a></div>
+										<div class="event_location">Hutech University</div>
+										<p>Ngày hội Open Day là sự kiện lớn nhất của Đại học, with nhiều hoạt động thú
+											vị
+											và
+											như thi đấu thể thao, các buổi biểu diễn nghệ thuật, và các hoạt động văn
+											hóa.</p>
 									</div>
 								</div>
-							</div>
 
+								<div class="col-lg-4 order-lg-3 order-1">
+									<div class="event_image">
+										<img src="images/event_2.jpg" alt="https://unsplash.com/@claybanks1989">
+									</div>
+								</div>
+
+							</div>
 						</div>
 					</div>
 
-					<!-- Events -->
+					<!-- Event Item -->
+					<div class="row event_item">
+						<div class="col">
+							<div class="row d-flex flex-row align-items-end">
 
-					<div class="events page_section">
-						<div class="container">
-
-							<div class="row">
-								<div class="col">
-									<div class="section_title text-center">
-										<h1>Sự kiện sắp tớis</h1>
-									</div>
-								</div>
-							</div>
-
-							<div class="event_items">
-
-								<!-- Event Item -->
-								<div class="row event_item">
-									<div class="col">
-										<div class="row d-flex flex-row align-items-end">
-
-											<div class="col-lg-2 order-lg-1 order-2">
-												<div
-													class="event_date d-flex flex-column align-items-center justify-content-center">
-													<div class="event_day">10</div>
-													<div class="event_month">Tháng 1</div>
-												</div>
-											</div>
-
-											<div class="col-lg-6 order-lg-2 order-3">
-												<div class="event_content">
-													<div class="event_name"><a class="trans_200" href="#">Lễ hội Sinh
-															viên</a></div>
-													<div class="event_location">Hutech University</div>
-													<p>Lễ hội Sinh viên là sự kiện lớn nhất của Đại học, với nhiều hoạt
-														động thú vị
-														và
-														như thi đấu thể thao, các buổi biểu diễn nghệ thuật, và các hoạt
-														động văn
-														hóa.</p>
-												</div>
-											</div>
-
-											<div class="col-lg-4 order-lg-3 order-1">
-												<div class="event_image">
-													<img src="images/event_1.jpg"
-														alt="https://unsplash.com/@theunsteady5">
-												</div>
-											</div>
-
-										</div>
+								<div class="col-lg-2 order-lg-1 order-2">
+									<div
+										class="event_date d-flex flex-column align-items-center justify-content-center">
+										<div class="event_day">25</div>
+										<div class="event_month">Tháng 1</div>
 									</div>
 								</div>
 
-								<!-- Event Item -->
-								<div class="row event_item">
-									<div class="col">
-										<div class="row d-flex flex-row align-items-end">
-
-											<div class="col-lg-2 order-lg-1 order-2">
-												<div
-													class="event_date d-flex flex-column align-items-center justify-content-center">
-													<div class="event_day">20</div>
-													<div class="event_month">Tháng 1</div>
-												</div>
-											</div>
-
-											<div class="col-lg-6 order-lg-2 order-3">
-												<div class="event_content">
-													<div class="event_name"><a class="trans_200" href="#">Ngày hội Open
-															Day tại
-															khuôn viên trường Đại học</a></div>
-													<div class="event_location">Hutech University</div>
-													<p>Ngày hội Open Day là sự kiện lớn nhất của Đại học, với nhiều hoạt
-														động thú vị
-														và
-														như thi đấu thể thao, các buổi biểu diễn nghệ thuật, và các hoạt
-														động văn
-														hóa.</p>
-												</div>
-											</div>
-
-											<div class="col-lg-4 order-lg-3 order-1">
-												<div class="event_image">
-													<img src="images/event_2.jpg"
-														alt="https://unsplash.com/@claybanks1989">
-												</div>
-											</div>
-
+								<div class="col-lg-6 order-lg-2 order-3">
+									<div class="event_content">
+										<div class="event_name"><a class="trans_200" href="#">Sinh viên tốt nghiệp</a>
 										</div>
+										<div class="event_location">Hutech University</div>
+										<p>Sinh viên tốt nghiệp là sự kiện lớn nhất của Đại học, with nhiều hoạt động
+											thú
+											vị và
+											như thi đấu thể thao, các buổi biểu diễn nghệ thuật, và các hoạt động văn
+											hóa.</p>
 									</div>
 								</div>
 
-								<!-- Event Item -->
-								<div class="row event_item">
-									<div class="col">
-										<div class="row d-flex flex-row align-items-end">
-
-											<div class="col-lg-2 order-lg-1 order-2">
-												<div
-													class="event_date d-flex flex-column align-items-center justify-content-center">
-													<div class="event_day">25</div>
-													<div class="event_month">Tháng 1</div>
-												</div>
-											</div>
-
-											<div class="col-lg-6 order-lg-2 order-3">
-												<div class="event_content">
-													<div class="event_name"><a class="trans_200" href="#">Sinh viên tốt
-															nghiệp</a>
-													</div>
-													<div class="event_location">Hutech University</div>
-													<p>Sinh viên tốt nghiệp là sự kiện lớn nhất của Đại học, với nhiều
-														hoạt động thú
-														vị và
-														như thi đấu thể thao, các buổi biểu diễn nghệ thuật, và các hoạt
-														động văn
-														hóa.</p>
-												</div>
-											</div>
-
-											<div class="col-lg-4 order-lg-3 order-1">
-												<div class="event_image">
-													<img src="images/event_3.jpg"
-														alt="https://unsplash.com/@juanmramosjr">
-												</div>
-											</div>
-
-										</div>
+								<div class="col-lg-4 order-lg-3 order-1">
+									<div class="event_image">
+										<img src="images/event_3.jpg" alt="https://unsplash.com/@juanmramosjr">
 									</div>
 								</div>
 
 							</div>
-
 						</div>
 					</div>
-
-					<!-- Footer -->
-
-					<footer class="footer">
-						<div class="container">
-
-							<!-- Newsletter -->
-
-							<div class="newsletter">
-								<div class="row">
-									<div class="col">
-										<div class="section_title text-center">
-											<h1>Nhận tin ưu đãi & khóa học mới</h1>
-										</div>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="col text-center">
-										<div class="newsletter_form_container mx-auto">
-											<form action="post">
-												<div
-													class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
-													<input id="newsletter_email" class="newsletter_email" type="email"
-														placeholder="Nhập email của bạn" required="required"
-														data-error="Valid email is required.">
-													<button id="newsletter_submit" type="submit"
-														class="newsletter_submit_btn trans_300" value="Submit">Đăng
-														ký</button>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-
-							</div>
-
-							<!-- Footer Content -->
-
-							<div class="footer_content">
-								<div class="row">
-
-									<!-- Footer Column - About -->
-									<div class="col-lg-3 footer_col">
-
-										<!-- Logo -->
-										<div class="logo_container">
-											<div class="logo">
-												<img src="images/logo.png" alt="">
-												<span>course</span>
-											</div>
-										</div>
-
-										<p class="footer_about_text">Khóa học được thiết kế với lộ trình rõ ràng, giúp
-											học viên nắm
-											vững kiến thức từ cơ bản đến nâng cao. Phương pháp giảng dạy dễ hiểu, thực
-											tế, giúp bạn
-											cải thiện kỹ năng nhanh chóng và áp dụng hiệu quả vào kỳ thi IELTS.</p>
-
-									</div>
-
-									<!-- Footer Column - Menu -->
-
-									<div class="col-lg-3 footer_col">
-										<div class="footer_column_title">Danh mục</div>
-										<div class="footer_column_content">
-											<ul>
-												<li class="footer_list_item"><a href="index.html">Trang chủ</a></li>
-												<li class="footer_list_item"><a href="courses.html">Khóa học</a></li>
-												<li class="footer_list_item"><a href="news.html">Tin tức</a></li>
-												<li class="footer_list_item"><a href="contact.html">Liên hệ</a></li>
-											</ul>
-										</div>
-									</div>
-
-									<!-- Footer Column - Usefull Links -->
-
-									<div class="col-lg-3 footer_col">
-										<div class="footer_column_title">Liên kết hữu ích</div>
-										<div class="footer_column_content">
-											<ul>
-												<li class="footer_list_item"><a href="#">Đánh giá</a></li>
-												<li class="footer_list_item"><a href="#">Câu hỏi thường gặp</a></li>
-												<li class="footer_list_item"><a href="#">Cộng đồng</a></li>
-												<li class="footer_list_item"><a href="#">Hình ảnh trường học</a></li>
-												<li class="footer_list_item"><a href="#">Học phí</a></li>
-											</ul>
-										</div>
-									</div>
-
-									<!-- Footer Column - Contact -->
-
-									<div class="col-lg-3 footer_col">
-										<div class="footer_column_title">Liên hệ</div>
-										<div class="footer_column_content">
-											<ul>
-												<li class="footer_contact_item">
-													<div class="footer_contact_icon">
-														<img src="images/placeholder.svg"
-															alt="https://www.flaticon.com/authors/lucy-g">
-													</div>
-													Nguyễn Trung Ngạn,Q1 Tp.HCM
-												</li>
-												<li class="footer_contact_item">
-													<div class="footer_contact_icon">
-														<img src="images/smartphone.svg"
-															alt="https://www.flaticon.com/authors/lucy-g">
-													</div>
-													+84 12345678910
-												</li>
-												<li class="footer_contact_item">
-													<div class="footer_contact_icon">
-														<img src="images/envelope.svg"
-															alt="https://www.flaticon.com/authors/lucy-g">
-													</div>ieltsbrians@gmail.com
-												</li>
-											</ul>
-										</div>
-									</div>
-
-								</div>
-							</div>
-
-							<!-- Footer Copyright -->
-
-							<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
-								<div class="footer_copyright">
-									<span>Copyright © 2026 All rights reserved | Designed & Developed by Nguyễn Đức Gia
-										Bảo</span>
-								</div>
-								<div class="footer_social ml-sm-auto">
-									<ul class="menu_social">
-										<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a>
-										</li>
-										<li class="menu_social_item"><a href="#"><i class="fab fa-linkedin-in"></i></a>
-										</li>
-										<li class="menu_social_item"><a href="#"><i class="fab fa-instagram"></i></a>
-										</li>
-										<li class="menu_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a>
-										</li>
-										<li class="menu_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-									</ul>
-								</div>
-							</div>
-
-						</div>
-					</footer>
 
 				</div>
 
-				<script src="js/jquery-3.2.1.min.js"></script>
-				<script src="styles/bootstrap4/popper.js"></script>
-				<script src="styles/bootstrap4/bootstrap.min.js"></script>
-				<script src="plugins/greensock/TweenMax.min.js"></script>
-				<script src="plugins/greensock/TimelineMax.min.js"></script>
-				<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-				<script src="plugins/greensock/animation.gsap.min.js"></script>
-				<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-				<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-				<script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
-				<script src="plugins/easing/easing.js"></script>
-				<script src="js/cart.js"></script>
-				<script src="js/google_sheets.js"></script>
-				<script src="js/custom.js"></script>
+			</div>
+		</div>
 
+		<!-- Footer -->
+
+		<footer class="footer">
+			<div class="container">
+
+				<!-- Newsletter -->
+
+				<div class="newsletter">
+					<div class="row">
+						<div class="col">
+							<div class="section_title text-center">
+								<h1>Nhận tin ưu đãi & khóa học mới</h1>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col text-center">
+							<div class="newsletter_form_container mx-auto">
+								<form action="post">
+									<div
+										class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+										<input id="newsletter_email" class="newsletter_email" type="email"
+											placeholder="Nhập email của bạn" required="required"
+											data-error="Valid email is required.">
+										<button id="newsletter_submit" type="submit"
+											class="newsletter_submit_btn trans_300" value="Submit">Đăng ký</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<!-- Footer Content -->
+
+				<div class="footer_content">
+					<div class="row">
+
+						<!-- Footer Column - About -->
+						<div class="col-lg-3 footer_col">
+
+							<!-- Logo -->
+							<div class="logo_container">
+								<div class="logo">
+									<img src="images/logo.png" alt="">
+									<span>course</span>
+								</div>
+							</div>
+
+							<p class="footer_about_text">Khóa học được thiết kế with lộ trình rõ ràng, giúp học viên nắm
+								vững kiến thức từ cơ bản đến nâng cao. Phương pháp giảng dạy dễ hiểu, thực tế, giúp bạn
+								cải thiện kỹ năng nhanh chóng và áp dụng hiệu quả vào kỳ thi IELTS.</p>
+
+						</div>
+
+						<!-- Footer Column - Menu -->
+
+						<div class="col-lg-3 footer_col">
+							<div class="footer_column_title">Danh mục</div>
+							<div class="footer_column_content">
+								<ul>
+									<li class="footer_list_item"><a href="index.html">Trang chủ</a></li>
+									<li class="footer_list_item"><a href="courses.html">Khóa học</a></li>
+									<li class="footer_list_item"><a href="news.html">Tin tức</a></li>
+									<li class="footer_list_item"><a href="contact.html">Liên hệ</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Footer Column - Usefull Links -->
+
+						<div class="col-lg-3 footer_col">
+							<div class="footer_column_title">Liên kết hữu ích</div>
+							<div class="footer_column_content">
+								<ul>
+									<li class="footer_list_item"><a href="#">Đánh giá</a></li>
+									<li class="footer_list_item"><a href="#">Câu hỏi thường gặp</a></li>
+									<li class="footer_list_item"><a href="#">Cộng đồng</a></li>
+									<li class="footer_list_item"><a href="#">Hình ảnh trường học</a></li>
+									<li class="footer_list_item"><a href="#">Học phí</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Footer Column - Contact -->
+
+						<div class="col-lg-3 footer_col">
+							<div class="footer_column_title">Liên hệ</div>
+							<div class="footer_column_content">
+								<ul>
+									<li class="footer_contact_item">
+										<div class="footer_contact_icon">
+											<img src="images/placeholder.svg"
+												alt="https://www.flaticon.com/authors/lucy-g">
+										</div>
+										Nguyễn Trung Ngạn,Q1 Tp.HCM
+									</li>
+									<li class="footer_contact_item">
+										<div class="footer_contact_icon">
+											<img src="images/smartphone.svg"
+												alt="https://www.flaticon.com/authors/lucy-g">
+										</div>
+										+84 12345678910
+									</li>
+									<li class="footer_contact_item">
+										<div class="footer_contact_icon">
+											<img src="images/envelope.svg"
+												alt="https://www.flaticon.com/authors/lucy-g">
+										</div>ieltsbrians@gmail.com
+									</li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- Footer Copyright -->
+
+				<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
+					<div class="footer_copyright">
+						<span>Copyright © 2026 All rights reserved | Designed & Developed by Nguyễn Đức Gia Bảo</span>
+					</div>
+					<div class="footer_social ml-sm-auto">
+						<ul class="menu_social">
+							<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+							<li class="menu_social_item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+							<li class="menu_social_item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+							<li class="menu_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+							<li class="menu_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Login Modal -->
+	<div id="loginModal" class="auth-modal">
+		<div class="auth-modal-content">
+			<span class="auth-close">&times;</span>
+			<div class="auth-header">
+				<h2>Đăng nhập</h2>
+				<p>Chào mừng bạn quay trở lại!</p>
+			</div>
+			<form id="login-form" class="auth-form">
+				<input type="email" id="login_email" class="input_field" placeholder="Email" required>
+				<input type="password" id="login_password" class="input_field" placeholder="Mật khẩu" required>
+				<button type="submit" class="auth-submit-btn">Đăng nhập</button>
+			</form>
+			<div class="auth-footer">
+				Chưa có tài khoản? <a href="#" id="switch-to-register">Đăng ký ngay</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Register Modal -->
+	<div id="registerModal" class="auth-modal">
+		<div class="auth-modal-content">
+			<span class="auth-close">&times;</span>
+			<div class="auth-header">
+				<h2>Đăng ký</h2>
+				<p>Tham gia cùng chúng tôi ngay hôm nay!</p>
+			</div>
+			<form id="register-form" class="auth-form">
+				<input type="text" name="name" class="input_field" placeholder="Họ và tên" required>
+				<input type="email" name="email" class="input_field" placeholder="Email" required>
+				<input type="password" name="password" class="input_field" placeholder="Mật khẩu" required>
+				<button type="submit" class="auth-submit-btn">Đăng ký</button>
+			</form>
+			<div class="auth-footer">
+				Đã có tài khoản? <a href="#" id="switch-to-login">Đăng nhập</a>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="styles/bootstrap4/popper.js"></script>
+	<script src="styles/bootstrap4/bootstrap.min.js"></script>
+	<script src="plugins/greensock/TweenMax.min.js"></script>
+	<script src="plugins/greensock/TimelineMax.min.js"></script>
+	<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+	<script src="plugins/greensock/animation.gsap.min.js"></script>
+	<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+	<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+	<script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
+	<script src="plugins/easing/easing.js"></script>
+	<script src="js/cart.js"></script>
+	<script src="js/google_sheets.js"></script>
+	<script src="js/auth.js"></script>
+	<script src="js/custom.js"></script>
+	<script>
+		$(document).ready(function () {
+			// Newsletter form submission
+			$('.newsletter_form form').on('submit', function (e) {
+				e.preventDefault();
+				const submitBtn = $('#newsletter_submit');
+				const formData = new FormData();
+				formData.append('type', 'newsletter');
+				formData.append('email', $('#newsletter_email').val());
+
+				submitToGoogleSheets(
+					formData,
+					submitBtn,
+					'Đăng ký nhận tin thành công!',
+					() => $('#newsletter_email').val('')
+				);
+			});
+
+			// Search form submission
+			$('#search_form').on('submit', function (e) {
+				e.preventDefault();
+				const submitBtn = $('#search_submit_button');
+				const formData = new FormData();
+				formData.append('type', 'search');
+				formData.append('name', $('#search_form_name').val());
+				formData.append('category', $('#search_form_category').val());
+				formData.append('degree', $('#search_form_degree').val());
+
+				submitToGoogleSheets(
+					formData,
+					submitBtn,
+					'Yêu cầu tìm kiếm đã được ghi nhận!',
+					() => $('#search_form')[0].reset()
+				);
+			});
+
+			// Smooth scroll for Register button
+			$('.register_button a').on('click', function (e) {
+				e.preventDefault();
+				$('html, body').animate({
+					scrollTop: $('.newsletter').offset().top
+				}, 1000);
+				$('#newsletter_email').focus();
+			});
+		});
+	</script>
 </body>
 
 </html>

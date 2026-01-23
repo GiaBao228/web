@@ -4,6 +4,7 @@
 <head>
     <title>Course - Giỏ hàng</title>
     <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="images/logo.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Course Project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -290,6 +291,13 @@
 
     <div class="super_container">
 
+        <!-- Custom Toast HTML -->
+        <div id="toast-overlay" class="toast-overlay"></div>
+        <div id="toast" class="custom-toast">
+            <i id="toast-icon" class="fas"></i>
+            <span id="toast-message"></span>
+        </div>
+
         <!-- Header -->
         <header class="header d-flex flex-row">
             <div class="header_content d-flex flex-row align-items-center">
@@ -307,6 +315,9 @@
                             <li class="main_nav_item"><a href="elements.html">Thành phần</a></li>
                             <li class="main_nav_item"><a href="news.html">Tin tức</a></li>
                             <li class="main_nav_item"><a href="contact.html">Liên hệ</a></li>
+                            <li class="main_nav_item login_btn_container">
+                                <button id="login_btn" class="login_btn">Đăng nhập</button>
+                            </li>
                             <li class="main_nav_item cart_nav_item">
                                 <div class="cart_icon_container" onclick="window.location.href='cart.html'">
                                     <i class="fas fa-shopping-cart"></i>
@@ -382,16 +393,49 @@
         </div>
     </div>
 
-    <!-- Custom Toast HTML -->
-    <div id="toast-overlay" class="toast-overlay"></div>
-    <div id="toast" class="custom-toast">
-        <i id="toast-icon" class="fas"></i>
-        <span id="toast-message"></span>
+    <!-- Login Modal -->
+    <div id="loginModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="auth-close">&times;</span>
+            <div class="auth-header">
+                <h2>Đăng nhập</h2>
+                <p>Chào mừng bạn quay trở lại!</p>
+            </div>
+            <form id="login-form" class="auth-form">
+                <input type="email" id="login_email" class="input_field" placeholder="Email" required>
+                <input type="password" id="login_password" class="input_field" placeholder="Mật khẩu" required>
+                <button type="submit" class="auth-submit-btn">Đăng nhập</button>
+            </form>
+            <div class="auth-footer">
+                Chưa có tài khoản? <a href="#" id="switch-to-register">Đăng ký ngay</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="auth-close">&times;</span>
+            <div class="auth-header">
+                <h2>Đăng ký</h2>
+                <p>Tham gia cùng chúng tôi ngay hôm nay!</p>
+            </div>
+            <form id="register-form" class="auth-form">
+                <input type="text" name="name" class="input_field" placeholder="Họ và tên" required>
+                <input type="email" name="email" class="input_field" placeholder="Email" required>
+                <input type="password" name="password" class="input_field" placeholder="Mật khẩu" required>
+                <button type="submit" class="auth-submit-btn">Đăng ký</button>
+            </form>
+            <div class="auth-footer">
+                Đã có tài khoản? <a href="#" id="switch-to-login">Đăng nhập</a>
+            </div>
+        </div>
     </div>
 
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/google_sheets.js"></script>
+    <script src="js/auth.js"></script>
     <script>
         function renderCart() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -461,8 +505,6 @@
         document.getElementById('checkout-form').addEventListener('submit', function (e) {
             e.preventDefault();
             const confirmBtn = document.getElementById('confirm_order_btn');
-            confirmBtn.disabled = true;
-            confirmBtn.innerText = 'Đang xử lý...';
 
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const courses = cart.map(item => item.title).join(', ');
@@ -477,20 +519,17 @@
             formData.append('courses', courses);
             formData.append('total', total);
 
-            fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
-                .then(() => {
-                    showToast('Đặt hàng thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.');
+            submitToGoogleSheets(
+                formData,
+                confirmBtn,
+                'Đặt hàng thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.',
+                () => {
                     localStorage.removeItem('cart');
                     renderCart();
                     closeModal();
                     if (typeof updateCartCount === 'function') updateCartCount();
-                })
-                .catch(error => {
-                    console.error('Error!', error.message);
-                    showToast('Có lỗi xảy ra, vui lòng thử lại sau.', 'error');
-                    confirmBtn.disabled = false;
-                    confirmBtn.innerText = 'Xác nhận đặt hàng';
-                });
+                }
+            );
         });
 
         $(document).ready(function () {

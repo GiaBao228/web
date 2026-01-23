@@ -11,11 +11,92 @@
 	<link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="styles/news_post_styles.css">
 	<link rel="stylesheet" type="text/css" href="styles/news_post_responsive.css">
+	<link rel="stylesheet" type="text/css" href="styles/google_sheets.css">
+	<style>
+		/* Fixed Header - White Theme */
+		.header {
+			top: 0 !important;
+			width: 100% !important;
+			left: 0 !important;
+			transform: none !important;
+			background: #ffffff !important;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+			border-bottom: 1px solid #d1d7dc;
+		}
+
+		.header_content {
+			width: calc(100% - 279px) !important;
+		}
+
+		.main_nav_item a {
+			color: #1c1d1f !important;
+			font-weight: 600;
+		}
+
+		.logo span {
+			color: #1c1d1f !important;
+		}
+
+		/* Header Side - Yellow Theme */
+		.header_side {
+			background: #ffb606 !important;
+		}
+
+		.header_side span {
+			color: #ffffff !important;
+		}
+
+		.header_side img {
+			filter: none;
+		}
+
+		.cart_nav_item {
+			margin-left: 20px;
+		}
+
+		.cart_nav_item i {
+			color: #1c1d1f !important;
+			font-size: 20px;
+		}
+
+		.cart_count {
+			position: absolute;
+			top: -10px;
+			right: -10px;
+			width: 20px;
+			height: 20px;
+			background: #a435f0 !important;
+			color: #ffffff !important;
+			border-radius: 50%;
+			font-size: 12px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 700;
+		}
+
+		@media (max-width: 991px) {
+			.header_content {
+				width: 100% !important;
+			}
+
+			.header_side {
+				display: none !important;
+			}
+		}
+	</style>
 </head>
 
 <body>
 
 	<div class="super_container">
+
+		<!-- Custom Toast HTML -->
+		<div id="toast-overlay" class="toast-overlay"></div>
+		<div id="toast" class="custom-toast">
+			<i id="toast-icon" class="fas"></i>
+			<span id="toast-message"></span>
+		</div>
 
 		<!-- Header -->
 
@@ -33,12 +114,14 @@
 				<nav class="main_nav_container">
 					<div class="main_nav">
 						<ul class="main_nav_list">
-							<li class="main_nav_item"><a href="index.html">home</a></li>
-							<li class="main_nav_item"><a href="#">about us</a></li>
-							<li class="main_nav_item"><a href="courses.html">courses</a></li>
-							<li class="main_nav_item"><a href="elements.html">elements</a></li>
-							<li class="main_nav_item"><a href="news.html">news</a></li>
-							<li class="main_nav_item"><a href="contact.html">contact</a></li>
+							<li class="main_nav_item"><a href="index.html">Trang chủ</a></li>
+							<li class="main_nav_item"><a href="courses.html">Khóa học</a></li>
+							<li class="main_nav_item"><a href="elements.html">Thành phần</a></li>
+							<li class="main_nav_item"><a href="news.html">Tin tức</a></li>
+							<li class="main_nav_item"><a href="contact.html">Liên hệ</a></li>
+							<li class="main_nav_item login_btn_container">
+								<button id="login_btn" class="login_btn">Đăng nhập</button>
+							</li>
 							<li class="main_nav_item cart_nav_item">
 								<div class="cart_icon_container" onclick="window.location.href='cart.html'">
 									<i class="fas fa-shopping-cart"></i>
@@ -56,7 +139,7 @@
 
 			<!-- Hamburger -->
 			<div class="hamburger_container">
-				<i class="fas fa-bars trans_200"></i>
+				<i class="fas fa-bars trans_200" style="color: #1c1d1f;"></i>
 			</div>
 
 		</header>
@@ -73,12 +156,11 @@
 			<div class="menu_inner menu_mm">
 				<div class="menu menu_mm">
 					<ul class="menu_list menu_mm">
-						<li class="menu_item menu_mm"><a href="index.html">Home</a></li>
-						<li class="menu_item menu_mm"><a href="#">About us</a></li>
-						<li class="menu_item menu_mm"><a href="courses.html">Courses</a></li>
-						<li class="menu_item menu_mm"><a href="elements.html">Elements</a></li>
-						<li class="menu_item menu_mm"><a href="news.html">News</a></li>
-						<li class="menu_item menu_mm"><a href="contact.html">Contact</a></li>
+						<li class="menu_item menu_mm"><a href="index.html">Trang chủ</a></li>
+						<li class="menu_item menu_mm"><a href="courses.html">Khóa học</a></li>
+						<li class="menu_item menu_mm"><a href="elements.html">Thành phần</a></li>
+						<li class="menu_item menu_mm"><a href="news.html">Tin tức</a></li>
+						<li class="menu_item menu_mm"><a href="contact.html">Liên hệ</a></li>
 					</ul>
 
 					<!-- Menu Social -->
@@ -107,7 +189,7 @@
 				<div class="home_background prlx" style="background-image:url(images/news_background.jpg)"></div>
 			</div>
 			<div class="home_content">
-				<h1>The News</h1>
+				<h1>Tin tức</h1>
 			</div>
 		</div>
 
@@ -401,7 +483,7 @@
 								</div>
 							</div>
 
-							<p class="footer_about_text">Khóa học được thiết kế với lộ trình rõ ràng, giúp học viên nắm
+							<p class="footer_about_text">Khóa học được thiết kế with lộ trình rõ ràng, giúp học viên nắm
 								vững kiến thức từ cơ bản đến nâng cao. Phương pháp giảng dạy dễ hiểu, thực tế, giúp bạn
 								cải thiện kỹ năng nhanh chóng và áp dụng hiệu quả vào kỳ thi IELTS.</p>
 
@@ -491,6 +573,45 @@
 
 	</div>
 
+	<!-- Login Modal -->
+	<div id="loginModal" class="auth-modal">
+		<div class="auth-modal-content">
+			<span class="auth-close">&times;</span>
+			<div class="auth-header">
+				<h2>Đăng nhập</h2>
+				<p>Chào mừng bạn quay trở lại!</p>
+			</div>
+			<form id="login-form" class="auth-form">
+				<input type="email" id="login_email" class="input_field" placeholder="Email" required>
+				<input type="password" id="login_password" class="input_field" placeholder="Mật khẩu" required>
+				<button type="submit" class="auth-submit-btn">Đăng nhập</button>
+			</form>
+			<div class="auth-footer">
+				Chưa có tài khoản? <a href="#" id="switch-to-register">Đăng ký ngay</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Register Modal -->
+	<div id="registerModal" class="auth-modal">
+		<div class="auth-modal-content">
+			<span class="auth-close">&times;</span>
+			<div class="auth-header">
+				<h2>Đăng ký</h2>
+				<p>Tham gia cùng chúng tôi ngay hôm nay!</p>
+			</div>
+			<form id="register-form" class="auth-form">
+				<input type="text" name="name" class="input_field" placeholder="Họ và tên" required>
+				<input type="email" name="email" class="input_field" placeholder="Email" required>
+				<input type="password" name="password" class="input_field" placeholder="Mật khẩu" required>
+				<button type="submit" class="auth-submit-btn">Đăng ký</button>
+			</form>
+			<div class="auth-footer">
+				Đã có tài khoản? <a href="#" id="switch-to-login">Đăng nhập</a>
+			</div>
+		</div>
+	</div>
+
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="styles/bootstrap4/popper.js"></script>
 	<script src="styles/bootstrap4/bootstrap.min.js"></script>
@@ -501,9 +622,29 @@
 	<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
 	<script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
 	<script src="plugins/easing/easing.js"></script>
-	<script src="js/cart.js"></script>
 	<script src="js/news_post_custom.js"></script>
+	<script src="js/cart.js"></script>
+	<script src="js/google_sheets.js"></script>
+	<script src="js/auth.js"></script>
+	<script>
+		$(document).ready(function () {
+			// Newsletter form submission
+			$('.newsletter_form form').on('submit', function (e) {
+				e.preventDefault();
+				const submitBtn = $('#newsletter_submit');
+				const formData = new FormData();
+				formData.append('type', 'newsletter');
+				formData.append('email', $('#newsletter_email').val());
 
+				submitToGoogleSheets(
+					formData,
+					submitBtn,
+					'Đăng ký nhận tin thành công!',
+					() => $('#newsletter_email').val('')
+				);
+			});
+		});
+	</script>
 </body>
 
 </html>

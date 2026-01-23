@@ -32,3 +32,46 @@ function showToast(message, type = 'success') {
         toast.classList.remove('active');
     }, 3000);
 }
+
+/**
+ * Centralized function to submit form data to Google Sheets
+ * @param {FormData} formData - The data to submit
+ * @param {HTMLElement} submitBtn - The button to disable/enable
+ * @param {string} successMsg - Message to show on success
+ * @param {function} callback - Optional function to run on success
+ */
+function submitToGoogleSheets(formData, submitBtn, successMsg, callback) {
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        // Lưu lại text gốc nếu chưa có
+        if (!submitBtn.getAttribute('data-original-text')) {
+            submitBtn.setAttribute('data-original-text', submitBtn.innerText);
+        }
+        submitBtn.innerText = 'Đang xử lý...';
+    }
+
+    fetch(scriptURL, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors',
+        cache: 'no-cache'
+    })
+        .then(() => {
+            // Với no-cors, nếu vào được .then nghĩa là yêu cầu đã được gửi đi thành công
+            showToast(successMsg, 'success');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerText = submitBtn.getAttribute('data-original-text') || 'Gửi';
+            }
+            if (callback) callback();
+        })
+        .catch(error => {
+            // Nếu vào .catch nghĩa là có lỗi mạng thực sự (mất kết nối, URL sai, hoặc bị chặn)
+            console.error('Google Sheets Error:', error);
+            showToast('Không thể gửi dữ liệu. Vui lòng kiểm tra kết nối mạng!', 'error');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerText = submitBtn.getAttribute('data-original-text') || 'Gửi';
+            }
+        });
+}

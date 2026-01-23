@@ -48,3 +48,109 @@
     font-weight: 600;
     color: #1c1d1f;
 }
+
+/* Auth Modal Styles */
+.auth-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.auth-modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.auth-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.auth-close:hover {
+    color: #1c1d1f;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.auth-header h2 {
+    font-size: 24px;
+    color: #1c1d1f;
+    margin-bottom: 10px;
+}
+
+.auth-form .input_field {
+    width: 100%;
+    height: 45px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border: 1px solid #d1d7dc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.auth-submit-btn {
+    width: 100%;
+    height: 45px;
+    background: #a435f0;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.auth-submit-btn:hover {
+    background: #8710d8;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.auth-footer a {
+    color: #a435f0;
+    font-weight: 700;
+}
+
+/* Header Login Button */
+.login_btn_container {
+    margin-left: 20px;
+}
+
+.login_btn {
+    background: transparent;
+    border: 1px solid #1c1d1f;
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #1c1d1f;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.login_btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}

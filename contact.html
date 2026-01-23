@@ -4,9 +4,11 @@
 <head>
 	<title>Course - Contact</title>
 	<meta charset="utf-8">
+	<link rel="icon" type="image/png" href="images/logo.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Course Project">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="images/logo.png">
 	<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
 	<link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="styles/contact_styles.css">
@@ -112,6 +114,9 @@
 							<li class="main_nav_item"><a href="elements.html">Thành phần</a></li>
 							<li class="main_nav_item"><a href="news.html">Tin tức</a></li>
 							<li class="main_nav_item"><a href="#">Liên hệ</a></li>
+							<li class="main_nav_item login_btn_container">
+								<button id="login_btn" class="login_btn">Đăng nhập</button>
+							</li>
 							<li class="main_nav_item cart_nav_item">
 								<div class="cart_icon_container" onclick="window.location.href='cart.html'">
 									<i class="fas fa-shopping-cart"></i>
@@ -179,7 +184,7 @@
 				<div class="home_background prlx" style="background-image:url(images/contact_background.jpg)"></div>
 			</div>
 			<div class="home_content">
-				<h1>Contact</h1>
+				<h1>Liên hệ</h1>
 			</div>
 		</div>
 
@@ -195,16 +200,17 @@
 							<div class="contact_title">Liên hệ với chúng tôi</div>
 
 							<div class="contact_form_container">
-								<form action="post">
-									<input id="contact_form_name" class="input_field contact_form_name" type="text"
-										placeholder="Họ và tên" required="required" data-error="Vui lòng nhập tên.">
-									<input id="contact_form_email" class="input_field contact_form_email" type="email"
-										placeholder="E-mail" required="required"
+								<form id="contact_form" action="post">
+									<input id="contact_form_name" name="name" class="input_field contact_form_name"
+										type="text" placeholder="Họ và tên" required="required"
+										data-error="Vui lòng nhập tên.">
+									<input id="contact_form_email" name="email" class="input_field contact_form_email"
+										type="email" placeholder="E-mail" required="required"
 										data-error="Vui lòng nhập email hợp lệ.">
 									<textarea id="contact_form_message" class="text_field contact_form_message"
 										name="message" placeholder="Lời nhắn" required="required"
 										data-error="Vui lòng để lại lời nhắn cho chúng tôi."></textarea>
-									<button id="contact_send_btn" type="button" class="contact_send_btn trans_200"
+									<button id="contact_send_btn" type="submit" class="contact_send_btn trans_200"
 										value="Submit">Gửi tin nhắn</button>
 								</form>
 							</div>
@@ -408,6 +414,45 @@
 
 	</div>
 
+	<!-- Login Modal -->
+	<div id="loginModal" class="auth-modal">
+		<div class="auth-modal-content">
+			<span class="auth-close">&times;</span>
+			<div class="auth-header">
+				<h2>Đăng nhập</h2>
+				<p>Chào mừng bạn quay trở lại!</p>
+			</div>
+			<form id="login-form" class="auth-form">
+				<input type="email" id="login_email" class="input_field" placeholder="Email" required>
+				<input type="password" id="login_password" class="input_field" placeholder="Mật khẩu" required>
+				<button type="submit" class="auth-submit-btn">Đăng nhập</button>
+			</form>
+			<div class="auth-footer">
+				Chưa có tài khoản? <a href="#" id="switch-to-register">Đăng ký ngay</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Register Modal -->
+	<div id="registerModal" class="auth-modal">
+		<div class="auth-modal-content">
+			<span class="auth-close">&times;</span>
+			<div class="auth-header">
+				<h2>Đăng ký</h2>
+				<p>Tham gia cùng chúng tôi ngay hôm nay!</p>
+			</div>
+			<form id="register-form" class="auth-form">
+				<input type="text" name="name" class="input_field" placeholder="Họ và tên" required>
+				<input type="email" name="email" class="input_field" placeholder="Email" required>
+				<input type="password" name="password" class="input_field" placeholder="Mật khẩu" required>
+				<button type="submit" class="auth-submit-btn">Đăng ký</button>
+			</form>
+			<div class="auth-footer">
+				Đã có tài khoản? <a href="#" id="switch-to-login">Đăng nhập</a>
+			</div>
+		</div>
+	</div>
+
 	<!-- Custom Toast HTML -->
 	<div id="toast-overlay" class="toast-overlay"></div>
 	<div id="toast" class="custom-toast">
@@ -428,45 +473,23 @@
 	<script src="plugins/easing/easing.js"></script>
 	<script src="js/contact_custom.js"></script>
 	<script src="js/google_sheets.js"></script>
+	<script src="js/auth.js"></script>
 
 	<script>
-		const form = document.querySelector('.contact_form_container form');
-		const sendBtn = document.getElementById('contact_send_btn');
+		$(document).ready(function () {
+			$('#contact_form').on('submit', function (e) {
+				e.preventDefault();
+				const submitBtn = $('#contact_send_btn');
+				const formData = new FormData(this);
+				formData.append('type', 'contact');
 
-		sendBtn.addEventListener('click', e => {
-			e.preventDefault();
-
-			const name = document.getElementById('contact_form_name').value;
-			const email = document.getElementById('contact_form_email').value;
-			const message = document.getElementById('contact_form_message').value;
-
-			if (!name || !email || !message) {
-				showToast('Vui lòng điền đầy đủ thông tin!', 'error');
-				return;
-			}
-
-			sendBtn.disabled = true;
-			sendBtn.innerText = 'Đang gửi...';
-
-			const formData = new FormData();
-			formData.append('type', 'contact');
-			formData.append('name', name);
-			formData.append('email', email);
-			formData.append('message', message);
-
-			fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
-				.then(response => {
-					showToast('Cảm ơn bạn! Tin nhắn đã được gửi thành công.');
-					form.reset();
-					sendBtn.disabled = false;
-					sendBtn.innerText = 'Gửi tin nhắn';
-				})
-				.catch(error => {
-					console.error('Error!', error.message);
-					showToast('Gửi tin nhắn thất bại!', 'error');
-					sendBtn.disabled = false;
-					sendBtn.innerText = 'Gửi tin nhắn';
-				});
+				submitToGoogleSheets(
+					formData,
+					submitBtn[0],
+					'Tin nhắn của bạn đã được gửi thành công!',
+					() => $('#contact_form')[0].reset()
+				);
+			});
 		});
 	</script>
 
